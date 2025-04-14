@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banca feiticera.vip</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #F3F3F3;
+        }
+
+        .background-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 0;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: move;
+        }
+
+        .menu-toggle {
+            background: #0078D4;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle:hover {
+            background: #005EA2;
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        #menu-checkbox:checked + .menu-toggle {
+            background: rgba(0, 120, 212, 0.8);
+            transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 300px;
+            max-height: 70vh;
+            overflow-y: auto;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        #menu-checkbox:checked ~ .menu-content {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .menu-card {
+            background: rgba(243, 243, 243, 0.85);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card h3 {
+            margin: 0 0 10px;
+            color: #1F1F1F;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .menu-card select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #E1E1E1;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1F1F1F;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .menu-card select:focus {
+            outline: none;
+            background: #FFFFFF;
+            border-color: #0078D4;
+        }
+
+        .palpites-result {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(249, 249, 249, 0.9);
+            border-radius: 4px;
+            color: #1F1F1F;
+            font-size: 14px;
+            display: none;
+        }
+
+        .palpites-result ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .palpites-result li {
+            padding: 5px 0;
+        }
+
+        .social-links {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 60px;
+            background: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1000;
+            padding-top: 20px;
+            padding-bottom: 80px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: #FFFFFF;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a.whatsapp {
+            background: #25D366;
+            font-size: 28px;
+        }
+
+        .social-links a.whatsapp:hover {
+            background: #1DA851;
+            transform: scale(1.15);
+        }
+
+        .social-links a.acertos {
+            background: #28a745;
+            background-image: url('acertos.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .social-links a.acertos:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+
+        .social-links a.aguia {
+            background: #6c757d;
+            background-image: url('aguia.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .social-links a.aguia:hover {
+            background-color: #5a6268;
+            transform: scale(1.1);
+        }
+
+        .social-links a.kwai {
+            background: rgba(255, 255, 255, 0.9);
+            background-image: url('kwai.png');
+            background-size: cover;
+            background-position: center;
+            color: #1F1F1F;
+        }
+
+        .social-links a.kwai:hover {
+            background-color: #0078D4;
+            transform: scale(1.1);
+        }
+
+        .social-links a.youtube {
+            background: #FF0000;
+        }
+
+        .social-links a.youtube:hover {
+            background: #CC0000;
+            transform: scale(1.1);
+        }
+
+        .aposte-agora {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-90deg);
+            color: red;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+            animation: blink 1s infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .mobile-menu {
+                bottom: 10px;
+                left: 10px;
+            }
+            .menu-content {
+                width: 90vw;
+                max-height: 60vh;
+            }
+            .social-links {
+                width: 50px;
+                padding-bottom: 60px;
+            }
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 22px;
+            }
+            .social-links a.whatsapp {
+                font-size: 24px;
+            }
+            .aposte-agora {
+                font-size: 12px;
+                padding: 3px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://app.feiticeira.vip/pr/2iCVbLKr" class="background-iframe"></iframe>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <input type="checkbox" id="menu-checkbox" style="display: none;">
+        <label for="menu-checkbox" class="menu-toggle">Menu</label>
+        <div class="menu-content">
+            <div class="menu-card">
+                <h3>Palpites do Dia</h3>
+                <select id="banca-select" onchange="showPalpites(this.value)">
+                    <option value="">Escolha uma banca</option>
+                    <option value="ptrio">PT Rio</option>
+                    <option value="look">Look</option>
+                    <option value="maluca">Maluca</option>
+                    <option value="lotep">Lotep</option>
+                    <option value="nacional">Nacional</option>
+                </select>
+                <div class="palpites-result" id="palpites-result">
+                    <div id="palpites-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://wa.me/message/JDWRS6FQDK7ZE1" target="_blank" class="whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://app.acertos.club/pr/CRTgB0ZV" target="_blank" class="acertos" title="Acertos"></a>
+        <a href="https://app.aguiaoficial.com/pr/ZXbjMC6Q" target="_blank" class="aguia" title="Águia"></a>
+        <a href="https://k.kwai.com/u/@ViviJB/3poP2lCP" target="_blank" class="kwai" title="Kwai"></a>
+        <a href="https://youtube.com/@vivijb2.0?si=Nxg3IXYKmEP4KXO1" target="_blank" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <span class="aposte-agora">Aposte Agora</span>
+    </div>
+
+    <script>
+        const palpitesData = {
+            "ptrio": [],
+            "look": [],
+            "maluca": [],
+            "lotep": [],
+            "nacional": []
+        };
+
+        function generateMilhar() {
+            return Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        }
+
+        function generatePalpites(banca) {
+            const palpites = new Set();
+            while (palpites.size < 10) {
+                palpites.add(generateMilhar());
+            }
+            palpitesData[banca] = Array.from(palpites);
+        }
+
+        Object.keys(palpitesData).forEach(banca => generatePalpites(banca));
+
+        function showPalpites(banca) {
+            const resultDiv = document.getElementById('palpites-result');
+            const ul = document.getElementById('palpites-list');
+            ul.innerHTML = '';
+
+            if (banca && palpitesData[banca]) {
+                resultDiv.style.display = 'block';
+                palpitesData[banca].forEach(palpite => {
+                    const li = document.createElement('li');
+                    li.textContent = palpite;
+                    ul.appendChild(li);
+                });
+            } else {
+                resultDiv.style.display = 'none';
+            }
+        }
+
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+
+        mobileMenu.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+
+        mobileMenu.addEventListener('touchstart', startDragging);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', stopDragging);
+
+        function startDragging(e) {
+            isDragging = true;
+            if (e.type === 'touchstart') {
+                initialX = e.touches[0].clientX - currentX;
+                initialY = e.touches[0].clientY - currentY;
+            } else {
+                initialX = e.clientX - currentX;
+                initialY = e.clientY - currentY;
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                let clientX, clientY;
+                if (e.type === 'touchmove') {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+
+                currentX = clientX - initialX;
+                currentY = clientY - initialY;
+
+                currentX = Math.max(0, Math.min(currentX, window.innerWidth - mobileMenu.offsetWidth));
+                currentY = Math.max(0, Math.min(currentY, window.innerHeight - mobileMenu.offsetHeight));
+
+                mobileMenu.style.left = currentX + 'px';
+                mobileMenu.style.bottom = (window.innerHeight - currentY - mobileMenu.offsetHeight) + 'px';
+            }
+        }
+
+        function stopDragging() {
+            isDragging = false;
+        }
+
+        currentX = 20;
+        currentY = window.innerHeight - 20 - mobileMenu.offsetHeight;
+        mobileMenu.style.left = currentX + 'px';
+        mobileMenu.style.bottom = (window.innerHeight - currentY - mobileMenu.offsetHeight) + 'px';
+    </script>
+</body>
+</html>
