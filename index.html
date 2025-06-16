@@ -20,9 +20,9 @@
   <meta property="og:description" content="Melhores bancas online: Acertos Club, Águia Oficial, Feiticeira Vip!">
   <meta property="og:url" content="https://bancafeiticeiravip.com">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://vivijb.com.br/og-image.jpg">
-  <title>Vivi Jb - Banca Acertos Club, Águia Oficial e Feiticeira Vip</title>
-  <link rel="icon" href="icon.png" type="image/png">
+  <meta property="og:image" content="https://bancafeiticeiravip.com/og-image.jpg">
+  <title>Banca Feiticeira.Vip - Melhor Banca do Brasil</title>
+  <link rel="icon" href="feiticeira.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
@@ -396,17 +396,17 @@
 <body>
   <header>
     <img src="feiticeira.png" alt="ZooGames Logo">
-    <h1>VIVI JB</h1>
+    <h1>FEITICEIRA VIP</h1>
   </header>
 
   <div id="main-content">
-    <div id="acertos">
+    <div id="acertos" class="hidden">
       <iframe allow="clipboard-read; clipboard-write" src="https://app.acertos.club/pr/JcsF2PpU" loading="lazy" sandbox="allow-scripts allow-same-origin allow-clipboard-write"></iframe>
     </div>
     <div id="aguia" class="hidden">
       <iframe allow="clipboard-read; clipboard-write" src="https://app.aguiaoficial.com/pr/ZXbjMC6Q" loading="lazy" sandbox="allow-scripts allow-same-origin allow-clipboard-write"></iframe>
     </div>
-    <div id="feiticeira" class="hidden">
+    <div id="feiticeira">
       <iframe allow="clipboard-read; clipboard-write" src="https://app.feiticeira.vip/pr/2iCVbLKr" loading="lazy" sandbox="allow-scripts allow-same-origin allow-clipboard-write"></iframe>
     </div>
     <div id="palpites-container" class="hidden">
@@ -442,7 +442,7 @@
   </div>
   <footer>
     <div class="row">
-      <button onclick="mostrar('acertos')" class="selected">
+      <button onclick="mostrar('acertos')">
         <img src="acertos.png" alt="Acertos Club">
         Acertos Club
       </button>
@@ -450,7 +450,7 @@
         <img src="aguia.png" alt="Águia Oficial">
         Águia Oficial
       </button>
-      <button onclick="mostrar('feiticeira')">
+      <button onclick="mostrar('feiticeira')" class="selected">
         <img src="feiticeira.png" alt="Feiticeira Vip">
         Feiticeira Vip
       </button>
@@ -590,12 +590,12 @@
 
           if (!acertos || !aguia || !feiticeira || !palpitesContainer || !suporte || !palpites || !suporteContent) {
             console.error('Um ou mais elementos principais não encontrados:', { acertos, aguia, feiticeira, palpitesContainer, suporte, palpites, suporteContent });
-            document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
             return;
           }
 
           if (id === 'suporte') {
-            window.open('https://wa.me/5583991177252?text=Ol%C3%A1%2C%20Suporte.%20Preciso%20de%20ajuda%21', '_blank');
+            window.open('https://wa.me/5583994073892?text=Ol%C3%A1%2C%20Suporte.%20Preciso%20de%20ajuda%21', '_blank');
             return;
           }
 
@@ -625,12 +625,12 @@
               handlePuxada();
             } else {
               console.error('Elementos de palpites não encontrados:', { animalSelect, bancaSelect, palpiteOutput });
-              palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção Palpites. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+              palpitesContainer.innerHTML = '<p class="error">Erro ao carregar a seção Palpites. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
             }
           }
         } catch (e) {
           console.error('Erro na função mostrar:', e);
-          document.body.innerHTML = '<p class="error">Erro crítico ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          document.body.innerHTML = '<p class="error">Erro crítico ao carregar a seção. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
         }
       }
 
@@ -761,7 +761,7 @@
           console.error('Erro na função displayPalpites:', e);
           const palpiteOutput = document.getElementById('palpiteOutput');
           if (palpiteOutput) {
-            palpiteOutput.innerHTML = '<p class="error">Erro ao carregar os palpites. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            palpiteOutput.innerHTML = '<p class="error">Erro ao carregar os palpites. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
           }
         }
       }
@@ -785,7 +785,7 @@
           console.error('Erro na função populateAnimalSelect:', e);
           const puxadaResult = document.getElementById('puxadaResult');
           if (puxadaResult) {
-            puxadaResult.innerHTML = '<p class="error">Erro ao carregar os animais. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            puxadaResult.innerHTML = '<p class="error">Erro ao carregar os animais. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
           }
         }
       }
@@ -829,7 +829,7 @@
           console.error('Erro na função handlePuxada:', e);
           const puxadaResult = document.getElementById('puxadaResult');
           if (puxadaResult) {
-            puxadaResult.innerHTML = '<p class="error">Erro ao carregar as puxadas. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            puxadaResult.innerHTML = '<p class="error">Erro ao carregar as puxadas. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
           }
         }
       }
@@ -841,7 +841,7 @@
           const gerarPalpitesBtn = document.getElementById('gerarPalpites');
           if (!bancaSelect || !gerarPalpitesBtn) {
             console.error('Elementos bancaSelect ou gerarPalpitesBtn não encontrados');
-            document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+            document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
             return;
           }
 
@@ -859,10 +859,10 @@
             displayPalpites();
           });
 
-          mostrar('acertos');
+          mostrar('feiticeira');
         } catch (e) {
           console.error('Erro na inicialização:', e);
-          document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+          document.body.innerHTML = '<p class="error">Erro ao carregar a página. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
         }
 
         if ('serviceWorker' in navigator) {
@@ -875,7 +875,7 @@
       });
     } catch (e) {
       console.error('Erro global:', e);
-      document.body.innerHTML = '<p class="error">Erro crítico ao carregar a página. Contate o suporte: <a href="https://wa.me/5583991177252">WhatsApp</a></p>';
+      document.body.innerHTML = '<p class="error">Erro crítico ao carregar a página. Contate o suporte: <a href="https://wa.me/5583994073892">WhatsApp</a></p>';
     }
   </script>
 </body>
