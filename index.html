@@ -25,6 +25,9 @@
   <meta property="og:image" content="https://bancafeiticeiravip.com/og-image.jpg">
   <title>Feiticeira.Vip - Melhor Banca do Brasil</title>
   <link rel="icon" href="feiticeira.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
@@ -34,7 +37,7 @@
       padding: 0;
     }
     body, html {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       background: #f4f6f8;
       height: 100%;
       display: flex;
@@ -65,10 +68,11 @@
       letter-spacing: 0.5px;
     }
     #main-content {
-      flex: 1;
-      margin-top: 52px;
-      margin-bottom: 68px;
-      position: relative;
+      position: fixed;
+      top: 52px;
+      bottom: 68px;
+      left: 0;
+      right: 0;
       background: #f4f6f8;
     }
     .iframe-box {
@@ -160,6 +164,11 @@
       transition: all 0.22s ease;
     }
     .nav-btn i {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-size: 22px;
       opacity: 0.75;
       transition: all 0.22s ease;
@@ -208,7 +217,7 @@
 </head>
 <body>
   <header>
-    <img src="feiticeira.png" alt="Feiticeira Vip">
+    <img src="feiticeira.png" alt="Feiticeira Vip" width="32" height="32">
     <h1>FEITICEIRA VIP</h1>
   </header>
 
@@ -227,15 +236,15 @@
   <footer>
     <div class="nav">
       <button class="nav-btn" data-tab="acertos" onclick="mostrar('acertos')">
-        <img src="superbancas.png" alt="">
+        <img src="superbancas.png" alt="" width="24" height="24">
         <span>Sup. bancas</span>
       </button>
       <button class="nav-btn" data-tab="aguia" onclick="mostrar('aguia')">
-        <img src="superacertos.png" alt="">
+        <img src="superacertos.png" alt="" width="24" height="24">
         <span>Sup. acertos</span>
       </button>
       <button class="nav-btn active" data-tab="feiticeira" onclick="mostrar('feiticeira')">
-        <img src="feiticeira.png" alt="">
+        <img src="feiticeira.png" alt="" width="24" height="24">
         <span>Feiticeira</span>
       </button>
       <button class="nav-btn" data-tab="suporte" onclick="mostrar('suporte')">
